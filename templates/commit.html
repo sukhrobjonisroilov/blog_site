@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      {% load static  %}
+    <title>Comment Box</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{% static 'assets/css/comment.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+  <div class="comment-box gradient-bg">
+  <h2 class="comment-title">Comment</h2>
+  <form method="post">
+      {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+    </div>
+
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" placeholder="Type your comment here"></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
+</div>
+</div>
+  </body>
+</html>
+

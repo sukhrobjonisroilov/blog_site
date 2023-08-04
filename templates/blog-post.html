@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    {% load static %}
+    <title>Bootstrap 4 Blog Template For Developers</title>
+    
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="{% static 'assets/css/comment.css' %}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Template">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
+    
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/monokai-sublime.min.css">
+    
+    <!-- Theme CSS -->  
+    {% include 'papka/css.html' %}
+    
+
+</head> 
+
+<body>
+    
+   {% include 'papka/user.html' %}
+    
+    <div class="main-wrapper">
+
+        <div class="container">
+            <header class="blog-post-header">
+                <h2 class="title mb-2">{{ blogs.title }}</h2>
+                <div class="meta mb-3"><span class="date">{{ blogs.date }}</span><span class="comment"><a href="#">4 comments</a></span></div>
+            </header>
+
+            <div class="blog-post-body">
+                <figure class="blog-banner">
+                    <a href="https://made4dev.com"><img class="img-fluid" src="{{ blogs.image.url }}" alt="image"></a>
+
+                </figure>
+                <p> {{ blogs.description }} </p>
+<h1>Comment </h1>
+{% for comment in comments %}
+<h2 style="color: #9e9ef1">{{ comment.name }}</h2>
+    <p>{{ comment.text }}</p>
+{% endfor %}
+
+
+
+
+
+<!-- Commentariya-->
+
+<div class="container">
+  <div class="comment-box gradient-bg">
+  <h2 class="comment-title">Comment</h2>
+  <form method="post">
+      {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name">
+    </div>
+
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" name="comment" placeholder="Type your comment here"></textarea>
+    </div>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
+</div>
+</div>
+                <!-- comment end-->
+
+	  {% include 'papka/footer.html' %}
+
+    
+
+    
+
+    <!-- *****CONFIGURE STYLE (REMOVE ON YOUR PRODUCTION SITE)****** -->  
+
+
+
+    
+       
+{% include 'papka/javascripts.html' %}
+    
+
+</body>
+</html> 
+
